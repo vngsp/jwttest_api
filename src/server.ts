@@ -20,7 +20,7 @@ server.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-server.options("*", cors());
+server.options(/.*/, cors());
 
 server.use("/", mainRouter);
 
