@@ -5,22 +5,9 @@ import mainRouter from "./routes/index.js";
 
 const server = express();
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://jwttest-front.vercel.app"
-];
-
 server.use(express.json());
 server.use(helmet());
-
-server.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
-server.options(/.*/, cors());
+server.use(cors())
 
 server.use("/", mainRouter);
 
