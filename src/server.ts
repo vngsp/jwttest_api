@@ -3,24 +3,30 @@ import helmet from "helmet";
 import cors from "cors";
 import mainRouter from "./routes/index.js";
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://jwttest-front-sx58.vercel.app"
-];
-
 const server = express();
 
 server.use(express.json());
 server.use(helmet());
 
 server.use(cors({
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+
+    const allowedOrigins = [
+      "http://localhost:3000",
+      "https://jwttest-front.vercel.app"
+    ];
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
-
-server.options(/.*/, cors());
 
 server.use("/", mainRouter);
 
