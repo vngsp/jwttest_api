@@ -5,28 +5,22 @@ import mainRouter from "./routes/index.js";
 
 const server = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://jwttest-front.vercel.app"
+];
+
 server.use(express.json());
 server.use(helmet());
 
 server.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-
-    const allowedOrigins = [
-      "http://localhost:3000",
-      "https://jwttest-front.vercel.app"
-    ];
-
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: allowedOrigins,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+server.options("*", cors());
 
 server.use("/", mainRouter);
 
