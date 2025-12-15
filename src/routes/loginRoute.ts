@@ -1,7 +1,7 @@
 import express from 'express';
-import { createUserController, createUsersController, deleteUserController, deleteUsersController, getAllUsersController, updateUserController } from '../controllers/userControllers';
-import { authToken } from '../middlewares/loginMiddleware';
-import { loginController, updateRefreshTokenController } from '../controllers/loginControllers';
+import { createUserController, createUsersController, deleteUserController, deleteUsersController, getAllUsersController, updateUserController } from '../controllers/userControllers.js';
+import { authToken } from '../middlewares/loginMiddleware.js';
+import { loginController, updateRefreshTokenController } from '../controllers/loginControllers.js';
 
 export const loginRouter = express.Router();
 
