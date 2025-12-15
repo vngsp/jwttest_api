@@ -1,7 +1,7 @@
-import { prisma } from '../lib/prisma';
+import { prisma } from '../lib/prisma.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { JWT_REFRESH_SECRET, JWT_SECRET } from '../configs/jwt';
+import { JWT_REFRESH_SECRET, JWT_SECRET } from '../configs/jwt.js';
 
 if(!JWT_SECRET) {
     throw new Error('JWT_SECRET must be defined in the environment variables.');

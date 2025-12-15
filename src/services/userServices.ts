@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
-import { prisma } from "../lib/prisma";
-import { JWT_SECRET } from "../configs/jwt";
+import { prisma } from "../lib/prisma.js";
+import { JWT_SECRET } from "../configs/jwt.js";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 

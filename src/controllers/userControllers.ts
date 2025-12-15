@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
-import { createUserService, createUsersService, deleteUserService, deleteUsersService, getAllUsersService, updateUserService } from "../services/userServices";
-import { prisma } from "../lib/prisma";
-import { JWT_REFRESH_SECRET, JWT_SECRET } from "../configs/jwt";
+import { createUserService, createUsersService, deleteUserService, deleteUsersService, getAllUsersService, updateUserService } from "../services/userServices.js";
+import { prisma } from "../lib/prisma.js";
+import { JWT_REFRESH_SECRET, JWT_SECRET } from "../configs/jwt.js";
 import jwt from 'jsonwebtoken';
 import { Prisma } from "@prisma/client";
 
